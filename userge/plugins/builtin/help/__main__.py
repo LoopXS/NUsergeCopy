@@ -188,7 +188,7 @@ if userge.has_bot:
             return
 
         if len(pos_list) == 2:
-            text = "🖥 **Userge Main Menu** 🖥"
+            text = "🖥 **Main Menu** 🖥"
             buttons = main_menu_buttons()
         elif len(pos_list) == 3:
             text, buttons = category_data(cur_pos)
@@ -243,7 +243,7 @@ if userge.has_bot:
     @check_owner
     async def callback_mm(callback_query: CallbackQuery):
         await callback_query.edit_message_text(
-            "🖥 **Userge Main Menu** 🖥", reply_markup=InlineKeyboardMarkup(main_menu_buttons()))
+            "🖥 **Main Menu** 🖥", reply_markup=InlineKeyboardMarkup(main_menu_buttons()))
 
     @userge.bot.on_callback_query(filters=filters.regex(pattern=r"^chgclnt$"))
     @check_owner
@@ -420,22 +420,19 @@ if userge.has_bot:
         results = [
             InlineQueryResultArticle(
                 id=uuid4(),
-                title="Repo",
+                title="𝒉𝒆𝒂𝒓𝒕𝒍𝒆𝒔𝒔",
                 input_message_content=InputTextMessageContent(
-                    "**Here's how to setup Userge** 😎"
+                    "ᥴᥣiᥴκ ᴛɦᥱ δᥙᴛᴛ᧐ᥒ δᥱᥣ᧐ᥕ ᴛ᧐ ᥴ᧐ᥒᴛᥲᥴᴛ !"
                 ),
-                url="https://github.com/UsergeTeam/Userge",
-                description="Setup Your Own",
-                thumb_url="https://imgur.com/download/Inyeb1S",
+                url="https://t.me/DarkPentester",
+                description="𝒍𝒂 𝒔𝒆𝒖𝒍𝒆 𝒓𝒂𝒊𝒔𝒐𝒏 𝒑𝒐𝒖𝒓 𝒍𝒂𝒒𝒖𝒆𝒍𝒍𝒆 𝒋𝒆 𝒓𝒆𝒔𝒑𝒊𝒓𝒆 | 𝒂𝒕𝒊 ♡",
+                thumb_url="https://telegra.ph/file/2def97874a6005606d5a4.jpg",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                "🧰 Userge Repo",
-                                url="https://github.com/UsergeTeam/Userge"),
-                            InlineKeyboardButton(
-                                "🖥 Deploy Userge",
-                                url="https://t.me/theUserge/102")
+                                "✨ ꜱᴜᴘᴘᴏʀᴛ ✨",
+                                url="https://t.me/DarkPentester")
                         ]
                     ]
                 )
@@ -448,11 +445,11 @@ if userge.has_bot:
                     id=uuid4(),
                     title="Main Menu",
                     input_message_content=InputTextMessageContent(
-                        "🖥 **Userge Main Menu** 🖥"
+                        "🖥 **Main Menu** 🖥"
                     ),
-                    url="https://github.com/UsergeTeam/Userge",
-                    description="Userge Main Menu",
-                    thumb_url="https://imgur.com/download/Inyeb1S",
+                    url="https://t.me/DarkPentester",
+                    description="Main Menu",
+                    thumb_url="https://telegra.ph/file/2def97874a6005606d5a4.jpg",
                     reply_markup=InlineKeyboardMarkup(main_menu_buttons())
                 )
             )
@@ -474,7 +471,7 @@ if userge.has_bot:
                     button = [
                         [
                             InlineKeyboardButton(
-                                "Info!", url=f"t.me/{bot_username}?start={cmd}"
+                                "Info", url=f"t.me/{bot_username}?start={cmd}"
                             )
                         ]
                     ]
