@@ -75,9 +75,7 @@ async def exec_(message: Message):
         await message.err(str(t_e))
         return
 
-    output = f"**EXEC**:\n\n\
-__Command:__\n`{cmd}`\n__PID:__\n`{pid}`\n__RETURN:__\n`{ret}`\n\n\
-**stderr:**\n`{err or 'no error'}`\n\n**stdout:**\n``{out or 'no output'}`` "
+    output = f"ʀⲉⲋυⳑⲧ :\n\nⲥⲟⲙⲙⲁⲛⲇ ~ `{cmd}`\n\nⲣⲓⲇ ~ `{pid}`\n\nʀⲉⲧυʀⲛ ~ `{ret}`\n\nⲋⲧⲇⲉʀʀ ~ `{err or 'no error'}`\n\nⲋⲧⲇⲟυⲧ ~ ``{out or 'no output'}``"
     await message.edit_or_send_as_file(text=output,
                                        as_raw=as_raw,
                                        parse_mode='md',
@@ -117,7 +115,7 @@ async def eval_(message: Message):
     size = len(_EVAL_TASKS)
     if '-l' in flags:
         if _EVAL_TASKS:
-            out = "**Eval Tasks**\n\n"
+            out = "**ⲉⳳⲁⳑ ⲧⲁⲋⲕⲋ :**\n\n"
             i = 0
             for c in _EVAL_TASKS.values():
                 out += f"**{i}** - `{c}`\n"
@@ -161,13 +159,13 @@ async def eval_(message: Message):
     async def _callback(output: Optional[str], errored: bool):
         final = ""
         if not silent_mode:
-            final += f"**>** ```{cmd}```\n\n"
+            final += f"**ⲉⳳⲁⳑ :**\n```{cmd}```\n\n"
         if isinstance(output, str):
             output = output.strip()
             if output == '':
                 output = None
         if output is not None:
-            final += f"**>>** ```{output}```"
+            final += f"**ʀⲉⲋυⳑⲧ :**\n```{output}```"
         if errored and message.chat.type in ("group", "supergroup", "channel"):
             msg_id = await CHANNEL.log(final)
             await msg.edit(f"**Logs**: {CHANNEL.get_link(msg_id)}")
