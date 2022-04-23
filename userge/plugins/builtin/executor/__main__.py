@@ -65,7 +65,7 @@ def input_checker(func: Callable[[Message], Awaitable[Any]]):
 @input_checker
 async def exec_(message: Message):
     """ run commands in exec """
-    await message.edit("`Executing exec ...`")
+    await message.edit("`ⲉⲭⲉⲥυⲧⲓⲛⳋ ⲉⲭⲉⲥ ...`")
     cmd = message.filtered_input_str
     as_raw = '-r' in message.flags
 
@@ -168,7 +168,7 @@ async def eval_(message: Message):
             final += f"**ʀⲉⲋυⳑⲧ :**\n```{output}```"
         if errored and message.chat.type in ("group", "supergroup", "channel"):
             msg_id = await CHANNEL.log(final)
-            await msg.edit(f"**Logs**: {CHANNEL.get_link(msg_id)}")
+            await msg.edit(f"ⳑⲟⳋⲋ : {CHANNEL.get_link(msg_id)}")
         elif final:
             await msg.edit_or_send_as_file(text=final,
                                            as_raw=as_raw,
@@ -185,7 +185,7 @@ async def eval_(message: Message):
             and str(replied.text.html).startswith("<b>></b> <pre>")):
         msg = replied
 
-    await msg.edit("`Executing eval ...`", parse_mode='md')
+    await msg.edit("`ⲉⲭⲉⲥυⲧⲓⲛⳋ ⲉⳳⲁⳑ ...`", parse_mode='md')
 
     _g, _l = _context(
         context_type, userge=userge, message=message, replied=message.reply_to_message)
@@ -220,7 +220,7 @@ async def eval_(message: Message):
 @input_checker
 async def term_(message: Message):
     """ run commands in shell (terminal with live update) """
-    await message.edit("`Executing terminal ...`")
+    await message.edit("`ⲉⲭⲉⲥυⲧⲓⲛⳋ ⲧⲉʀⲙⲓⲛⲁⳑ ...`")
     cmd = message.filtered_input_str
     as_raw = '-r' in message.flags
 
@@ -239,8 +239,9 @@ async def term_(message: Message):
     cur_user = getuser()
     uid = geteuid()
 
-    prefix = f"<b>{cur_user}:~#</b>" if uid == 0 else f"<b>{cur_user}:~$</b>"
-    output = f"{prefix} <pre>{cmd}</pre>\n"
+    prefix = f"**ⲥⲟⲙⲙⲁⲛⲇ :**"
+    outpwx = f"**ⲟυⲧⲣυⲧ :**\n"
+    output = f"{prefix}\n<pre>{cmd}</pre>\n\n"
 
     with message.cancel_callback(t_obj.cancel):
         await t_obj.init()
@@ -251,7 +252,7 @@ async def term_(message: Message):
             await message.canceled(reply=True)
             return
 
-    out_data = f"{output}<pre>{t_obj.output}</pre>\n{prefix}"
+    out_data = f"{output}{outpwx}<pre>{t_obj.output}</pre>"
     await message.edit_or_send_as_file(
         out_data, as_raw=as_raw, parse_mode='html', filename="term.txt", caption=cmd)
 
