@@ -75,7 +75,7 @@ async def exec_(message: Message):
         await message.err(str(t_e))
         return
 
-    output = f"ʀⲉⲋυⳑⲧ :\n\nⲥⲟⲙⲙⲁⲛⲇ ~ `{cmd}`\n\nⲣⲓⲇ ~ `{pid}`\n\nʀⲉⲧυʀⲛ ~ `{ret}`\n\nⲋⲧⲇⲉʀʀ ~ `{err or 'no error'}`\n\nⲋⲧⲇⲟυⲧ ~ ``{out or 'no output'}``"
+    output = f"**ʀⲉⲋυⳑⲧ :**\n\n**ⲥⲟⲙⲙⲁⲛⲇ ~** `{cmd}`\n\n**ⲣⲓⲇ ~** `{pid}`\n\n**ʀⲉⲧυʀⲛ ~** `{ret}`\n\n**ⲋⲧⲇⲉʀʀ ~** `{err or 'no error'}`\n\n**ⲋⲧⲇⲟυⲧ ~** ``{out or 'no output'}``"
     await message.edit_or_send_as_file(text=output,
                                        as_raw=as_raw,
                                        parse_mode='md',
@@ -115,7 +115,7 @@ async def eval_(message: Message):
     size = len(_EVAL_TASKS)
     if '-l' in flags:
         if _EVAL_TASKS:
-            out = "**ⲉⳳⲁⳑ ⲧⲁⲋⲕⲋ :**\n\n"
+            out = "__►__ **ⲉⳳⲁⳑ ⲧⲁⲋⲕⲋ :**\n\n"
             i = 0
             for c in _EVAL_TASKS.values():
                 out += f"**{i}** - `{c}`\n"
@@ -159,16 +159,16 @@ async def eval_(message: Message):
     async def _callback(output: Optional[str], errored: bool):
         final = ""
         if not silent_mode:
-            final += f"**ⲉⳳⲁⳑ :**\n```{cmd}```\n\n"
+            final += f"__►__ **ⲉⳳⲁⳑ :**\n```{cmd}```\n\n"
         if isinstance(output, str):
             output = output.strip()
             if output == '':
                 output = None
         if output is not None:
-            final += f"**ʀⲉⲋυⳑⲧ :**\n```{output}```"
+            final += f"__►__ **ʀⲉⲋυⳑⲧ :**\n```{output}```"
         if errored and message.chat.type in ("group", "supergroup", "channel"):
             msg_id = await CHANNEL.log(final)
-            await msg.edit(f"ⳑⲟⳋⲋ : {CHANNEL.get_link(msg_id)}")
+            await msg.edit(f"__►__ **ⳑⲟⳋⲋ :** {CHANNEL.get_link(msg_id)}")
         elif final:
             await msg.edit_or_send_as_file(text=final,
                                            as_raw=as_raw,
@@ -239,8 +239,8 @@ async def term_(message: Message):
     cur_user = getuser()
     uid = geteuid()
 
-    prefix = f"**ⲥⲟⲙⲙⲁⲛⲇ :**"
-    outpwx = f"**ⲟυⲧⲣυⲧ :**\n"
+    prefix = f"<b>ⲥⲟⲙⲙⲁⲛⲇ :</b>"
+    outpwx = f"<b>ⲟυⲧⲣυⲧ :</b>\n"
     output = f"{prefix}\n<pre>{cmd}</pre>\n\n"
 
     with message.cancel_callback(t_obj.cancel):
