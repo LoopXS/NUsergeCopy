@@ -75,7 +75,7 @@ async def exec_(message: Message):
         await message.err(str(t_e))
         return
 
-    output = f"**ʀⲉⲋυⳑⲧ :**\n\n**ⲥⲟⲙⲙⲁⲛⲇ ~** `{cmd}`\n\n**ⲣⲓⲇ ~** `{pid}`\n\n**ʀⲉⲧυʀⲛ ~** `{ret}`\n\n**ⲋⲧⲇⲉʀʀ ~** `{err or 'no error'}`\n\n**ⲋⲧⲇⲟυⲧ ~** ``{out or 'no output'}``"
+    output = f"**✗ ʀⲉⲋυⳑⲧ :**\n\n__►__ **ⲥⲟⲙⲙⲁⲛⲇ ~** `{cmd}`\n\n__►__ **ⲣⲓⲇ ~** `{pid}`\n\n__►__ **ʀⲉⲧυʀⲛ ~** `{ret}`\n\n__►__ **ⲋⲧⲇⲉʀʀ ~** `{err or 'no error'}`\n\n__►__ **ⲋⲧⲇⲟυⲧ ~** ``{out or 'no output'}``"
     await message.edit_or_send_as_file(text=output,
                                        as_raw=as_raw,
                                        parse_mode='md',
@@ -239,8 +239,8 @@ async def term_(message: Message):
     cur_user = getuser()
     uid = geteuid()
 
-    prefix = f"<b>ⲥⲟⲙⲙⲁⲛⲇ :</b>"
-    outpwx = f"<b>ⲟυⲧⲣυⲧ :</b>\n"
+    prefix = f"<i>►</i> <b>ⲥⲟⲙⲙⲁⲛⲇ :</b>"
+    outpwx = f"<i>►</i> <b>ⲟυⲧⲣυⲧ :</b>\n"
     output = f"{prefix}\n<pre>{cmd}</pre>\n\n"
 
     with message.cancel_callback(t_obj.cancel):
