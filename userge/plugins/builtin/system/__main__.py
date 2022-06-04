@@ -60,25 +60,25 @@ async def _init() -> None:
     'examples': "{tr}restart -t -d"}, del_pre=True, allow_channels=False)
 async def restart_(message: Message):
     """ restart userge """
-    await message.edit("`Restarting Userge Services`", log=__name__)
+    await message.edit("`Restarting ...`", log=__name__)
 
     if 'd' in message.flags:
         shutil.rmtree(config.Dynamic.DOWN_PATH, ignore_errors=True)
 
     if 'hu' in message.flags:
         if config.HEROKU_APP:
-            await message.edit("`Restarting [HEROKU] ...`", del_in=1)
+            await message.edit("`Restarting ...`", del_in=1)
             config.HEROKU_APP.restart()
             time.sleep(30)
         else:
-            await message.edit("`Heroku app not found !`", del_in=1)
+            await message.edit("`Heroku App Not Found !`", del_in=1)
 
     elif 'h' in message.flags:
-        await message.edit("`Restarting [HARD] ...`", del_in=1)
+        await message.edit("`Restarting Hard ...`", del_in=1)
         await userge.restart(hard=True)
 
     else:
-        await message.edit("`Restarting [SOFT] ...`", del_in=1)
+        await message.edit("`Restarting Soft ...`", del_in=1)
         await userge.restart()
 
 
@@ -100,7 +100,7 @@ async def die_(message: Message) -> None:
     """ set offline timeout to die userge """
     global MAX_IDLE_TIME  # pylint: disable=global-statement
     if not config.HEROKU_APP:
-        await message.edit("`heroku app not detected !`", del_in=5)
+        await message.edit("`Heroku App Not Detected !`", del_in=5)
         return
 
     await message.edit('`processing ...`')
@@ -170,7 +170,7 @@ async def delvar_(message: Message) -> None:
     var_name = message.input_str.strip()
     var_data = system.get_env(var_name)
 
-    if var_data:
+    if not var_data:
         await message.err(f"`var {var_name} not found!`")
         return
 
